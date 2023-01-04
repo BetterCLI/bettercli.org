@@ -1,0 +1,34 @@
+$ multipush --help
+multipush CLI v1.0.0 (2023-01-01)
+
+Synchronize files between multiple repositories.
+
+DESCRIPTION
+  Cobra is a CLI library for Go that empowers applications.
+  This application is a tool to generate the needed files
+  to quickly create a Cobra application.
+
+USAGE
+  $ multipush COMMAND [OPTIONS]
+  $ multipush SOURCE TARGET [TARGET...] [OPTIONS]
+
+EXAMPLE
+
+
+COMMANDS
+  Use "multipush [COMMAND] --help" for more information about a command.
+
+OPTIONS
+
+
+Available Commands:
+  completion  Generate the autocompletion script for the specified shell
+  config      A brief description of your command
+  help        Help about any command
+  serve       A brief description of your command
+
+Flags:
+  -h, --help     help for multipush
+  -t, --toggle   Help message for toggle
+
+Use "multipush [command] --help" for more information about a command.

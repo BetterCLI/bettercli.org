@@ -1,0 +1,63 @@
+{
+  "name": "bettercli.org",
+  "description": "CLI Design Guide & Reference",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=16.17.0",
+    "npm": ">=8.15.0"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BetterCLI/bettercli.org"
+  },
+  "license": "MIT",
+  "scripts": {
+    "predev": "npm run clean:build",
+    "dev": "exec-bin node_modules/.bin/hugo/hugo server --gc --bind=0.0.0.0 --disableFastRender --baseURL=http://localhost",
+    "create": "exec-bin node_modules/.bin/hugo/hugo new",
+    "check": "npm run check:scripts && npm run check:styles && npm run check:markdown",
+    "check:scripts": "eslint config",
+    "check:styles": "stylelint \"assets/scss/**/*.{css,sass,scss}\"",
+    "check:markdown": "markdownlint-cli2 \"*.md\" \"content/**/*.md\"",
+    "fix:markdown": "markdownlint-cli2-fix \"*.md\" \"content/**/*.md\"",
+    "test": "npm run check",
+    "prebuild": "npm run clean:build",
+    "build": "exec-bin node_modules/.bin/hugo/hugo --gc --minify",
+    "preview": "http-server --gzip --brotli --ext=html --cors",
+    "clean": "npm run clean:build && npm run clean:install",
+    "clean:build": "shx rm -rf public resources .hugo_build.lock",
+    "clean:install": "shx rm -rf package-lock.json yarn.lock pnpm-lock.yaml node_modules",
+    "preinfo": "npm version",
+    "info": "npm list",
+    "postinfo": "exec-bin node_modules/.bin/hugo/hugo version",
+    "postinstall": "hugo-installer --version otherDependencies.hugo --extended --destination node_modules/.bin/hugo"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "@hyas/core": "^0.1.4",
+    "autoprefixer": "^10.4.13",
+    "eslint": "^8.27.0",
+    "exec-bin": "^1.0.0",
+    "http-server": "^14.1.1",
+    "hugo-installer": "^4.0.1",
+    "markdownlint-cli2": "^0.5.1",
+    "mermaid": "^9.3.0",
+    "modern-css-reset": "^1.4.0",
+    "netlify-plugin-submit-sitemap": "^0.4.0",
+    "postcss": "^8.4.18",
+    "postcss-cli": "^10.0.0",
+    "quicklink": "^2.3.0",
+    "shx": "^0.3.4",
+    "stylelint": "^14.14.0",
+    "stylelint-config-standard-scss": "^6.1.0"
+  },
+  "otherDependencies": {
+    "hugo": "0.105.0"
+  }
+}

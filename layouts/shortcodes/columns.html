@@ -1,0 +1,8 @@
+<!-- http://oostens.me/posts/hugo-column-shortcode/ -->
+<div class="md-columns">
+  {{ range split .Inner "<--->" }}
+  {{ printf "<div class=\"markdown-inner\">" | htmlUnescape | safeHTML }}
+  {{ . | safeHTML }}
+  {{ printf "</div>" | htmlUnescape | safeHTML }}
+  {{ end }}
+  </div>
