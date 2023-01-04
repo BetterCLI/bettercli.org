@@ -1,0 +1,9 @@
+# Meta Data for SEO
+
+## Homepage
+title = "Better CLI"
+titleSeparator = "-"
+titleAddition = "CLI Design Guide & Reference"
+
+# Feed
+copyRight = "Copyright (c) 2023 Jakub Mikulas"

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+  {{ partial "head/head.html" . }}
+  {{ partial "head/body-class.html" . }}
+  <body class="{{ delimit (.Scratch.Get "class") " " }}">
+    <header>
+      <div class="logo">
+        <div class="logo--inner">
+          <h1>$ <a  href="{{ .Site.BaseURL }}">{{ .Site.Params.title }}</a></h1>
+          <h2># {{ .Site.Params.titleAddition }}</h2>
+          {{if .IsHome}}
+            <p>{{ .Page.Params.lead | markdownify }}</p>
+          {{end}}
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="{{ relref . "design" }}">Design Guides</a></li>
+          <li><a href="{{ relref . "how-to" }}">How tos</a></li>
+          <li><a href="{{ relref . "reference" }}">Reference</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    {{ if templates.Exists "partials/footer/script-footer.html" -}}
+      {{ partial "footer/script-footer.html" . }}
+    {{ else -}}
+      {{ partial "footer/script-footer-core.html" . }}
+    {{ end -}}
+  </body>
+</html>
