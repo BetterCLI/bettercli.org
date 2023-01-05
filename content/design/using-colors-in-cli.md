@@ -2,9 +2,11 @@
 title: Colors and formatting in the output
 ---
 
-Learn how you can make your CLI output colors and how to use them to your advantage. And when to avoid formatting in terminal.
+Learn how you can make your CLI application output colors and how to use them to your advantage. And when to avoid formatting in the terminal.
 
-You can make information standout by applying text formatting like bold, italics, or text/background colors. However, you should be careful with colors in terminal applications. And there are many situations where you shouldn’t use colors at all.
+<!--more-->
+
+You can make information stand out by applying text formatting like bold, italics, or text/background colors. However, you should be careful with colors in terminal applications. And there are many situations where you shouldn’t use colors at all.
 
 See some notes on accessibility in the “How does CLI text formatting interact with color schemes?” below.
 
@@ -12,7 +14,7 @@ See some notes on accessibility in the “How does CLI text formatting interact 
 
 Colors are supported by most modern shells and terminals that you might encounter. There are some platform-specific gotchas and limitations. If you are planning to use text styles a lot, it’s a good idea to use a library, that will handle these edge cases.
 
-Best way to color your terminal output is to use ASCII escape sequence. Those are _hidden_ control characters that looks like this `\033[31m` This will print following text in red.
+The best way to color your terminal output is to use ASCII escape sequence. Those are _hidden_ control characters that looks like this `\033[31m` This will print following text in red.
 
 1. start with an [ASCII escape character](https://en.wikipedia.org/wiki/Escape_character) `\033`, `\u001b` or `^[` depending on a language of your choice
 2. continue with `[` and a [formatting code](https://en.wikipedia.org/wiki/ANSI_escape_code#Description)
@@ -32,17 +34,17 @@ When defining a background color also define the text color. You’ll prevent in
 
 ### Notes on backspace escaping aka overstriking[^1]
 
-Dated practice, not recommended as terminals often ignore it. Still supported by Pager programs. Works by simulating a typewriter behavior, using a Backspace Escape character to move cursor one character back and overtype it to make it bold. Still used by manpages.
+Dated practice, is not recommended as terminals often ignore it. Still supported by Pager programs. Works by simulating a typewriter behavior, using a Backspace Escape character to move the cursor one character back and overtype it to make it bold. Still used by manpages.
 
-Will lead to a silly rendering in some text editors, e.g., bolded word “**OPTIONS**” will show up as “OOPPTTIIOONNSS”.
+This will lead to a silly rendering in some text editors, e.g., the bolded word “**OPTIONS**” will show up as `OOPPTTIIOONNSS` with unprintable backspace characters scattered between the letters.
 
 ## When not to use colors or formatting?
 
 There are situations, where you should strip colors from your terminal output.
 
-### When output is not terminal
+### When the output is not terminal
 
-When output is being parsed or searched with grep, and it has formatting in the output it’s harder to search/parse it.
+When the output is being parsed or searched with grep, and it has formatting in the output it’s harder to search/parse it.
 
 ```bash
  ~/ echo "\e[1mhell\e[0mo"
@@ -61,7 +63,7 @@ Good way to account for this, is by detecting if program output is being piped s
 $ multipush | grep string
 ```
 
-### When `NO_COLOR` is set
+### When NO_COLOR is set
 
 If `NO_COLOR` environment variable is present, your application shouldn’t output any colors. Per [no-color.org](https://no-color.org).
 

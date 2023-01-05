@@ -11,7 +11,15 @@ code {
   overflow: auto;
 }
 
-p {
+a {
+  &:hover,
+  &:visited:hover {
+    color: rgb(72, 72, 255);
+  }
+}
+
+p,
+li {
   pre,
   code {
     font-family: monospace;
@@ -45,6 +53,7 @@ header {
       text-decoration: none;
       &:hover {
         text-decoration: underline;
+        color: white;
       }
     }
     p {
@@ -59,8 +68,18 @@ header {
       font-size: 1.2rem;
       margin-top: 0;
     }
+    h1 {
+      &:before {
+        content: '$';
+        padding-right: 0.5rem;
+      }
+    }
     h2 {
       font-weight: normal;
+      &:before {
+        content: '#';
+        padding-right: 0.5rem;
+      }
     }
   }
 
@@ -69,11 +88,15 @@ header {
     ul,
     li {
       display: inline-block;
-      margin: 8px 18px 0 0;
+      margin-right: 18px;
       padding-left: 0;
     }
     a {
       color: white;
+      &:visited:hover,
+      &:hover {
+        color: rgb(200, 200, 255);
+      }
     }
   }
 }

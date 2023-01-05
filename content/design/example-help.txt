@@ -1,4 +1,3 @@
-$ multipush --help
 multipush CLI v1.0.0 (2023-01-01)
 
 Synchronize files between multiple repositories.

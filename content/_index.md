@@ -15,6 +15,8 @@ This document should act as a best practices showcase and reference for anyone w
 
 CLIs are a rather specific area. They are very close to UI/desktop applications, especially
 
+CLI application could be a massive ecosystem on its own or a companion application to another product or a single-purpose utility.
+
 I’m using a very broad definition when talking about CLI or CLI apps. „CLI application“ used in this guide could describe something as simple as a bash script, or something as complex as a full-blown UI in the terminal. It could be a utilitarian script performing a single action. Or a major application meant to run continuously as a service.
 
 {{% /columns %}}

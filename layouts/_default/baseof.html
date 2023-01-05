@@ -6,8 +6,8 @@
     <header>
       <div class="logo">
         <div class="logo--inner">
-          <h1>$ <a  href="{{ .Site.BaseURL }}">{{ .Site.Params.title }}</a></h1>
-          <h2># {{ .Site.Params.titleAddition }}</h2>
+          <h1><a  href="{{ .Site.BaseURL }}">{{ .Site.Params.title }}</a></h1>
+          <h2>{{ .Site.Params.titleAddition }}</h2>
           {{if .IsHome}}
             <p>{{ .Page.Params.lead | markdownify }}</p>
           {{end}}

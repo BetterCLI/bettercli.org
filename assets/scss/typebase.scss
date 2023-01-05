@@ -12,8 +12,7 @@ $scale: 1.414 !default;
 
 html {
   /* Change default typefaces here */
-  font-family: Calisto MT, Bookman Old Style, Bookman, Goudy Old Style, Garamond,
-    Hoefler Text, Bitstream Charter, Georgia, serif;
+  font-family: palatino, serif;
   font-size: $baseFontSize / 16 * 100%;
   // Make everything look a little nicer in webkit
   -webkit-font-smoothing: antialiased;
@@ -98,8 +97,7 @@ th {
 /* Code blocks */
 
 code {
-  // Forces text to constrain to the line-height. Not ideal, but works.
-  vertical-align: text-bottom;
+  vertical-align: bottom;
 }
 /* Leading paragraph text */
 
