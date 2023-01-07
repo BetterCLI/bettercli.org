@@ -1,4 +1,5 @@
-baseurl = "/"
+baseurl = "https://bettercli.org/"
+title = "BetterCLI.org"
 canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true

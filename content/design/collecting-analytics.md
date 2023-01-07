@@ -2,7 +2,13 @@
 title: Collecting analytics
 ---
 
-Using analytics tools to gain visibility into CLI and feature usage is something
+Using analytics tools to gain visibility into CLI and feature usage is an essential tool for supporting and evolving your CLI application.
+
+<!--more-->
+
+## Analytics outside of the CLI
+
+Bundling analytics might be problematic, because of [the lifecycle of the CLI application]({{< relref "cli-application-lifecycle" >}}).
 
 If your CLI is used primarily as an API client, or is relying on API usage heavily, relying on a well formed HTTP User-agent header and API gateway analytics might give you good enough visibility. Consider this approach:
 

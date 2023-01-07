@@ -1,5 +1,32 @@
 {{ if .IsHome -}}
-  <title>{{ .Site.Params.title }} {{ .Site.Params.titleSeparator }} {{ .Site.Params.titleAddition }}</title>
+<title>
+  {{ .Site.Params.title }} {{ .Site.Params.titleSeparator }} {{
+  .Site.Params.titleAddition }}
+</title>
 {{ else -}}
-  <title>{{ .Title }} {{ .Site.Params.titleSeparator }} {{ .Site.Params.title }}</title>
+<title>
+  {{ .Title }} {{ .Site.Params.titleSeparator }} {{ .Site.Params.title }}
+</title>
 {{ end -}}
+
+<base href="{{ .Permalink }}" />
+<link rel="canonical" href="{{ .Permalink }}" itemprop="url" />
+<meta name="url" content="{{ .Permalink }}" />
+<meta name="twitter:url" content="{{ .Permalink }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+
+<title itemprop="name">{{ .Title }} | {{ .Site.Title }}</title>
+<meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}" />
+<meta name="twitter:title" content="{{ .Title }} | {{ .Site.Title }}" />
+<meta itemprop="name" content="{{ .Title }} | {{ .Site.Title }}" />
+<meta name="application-name" content="{{ .Title }} | {{ .Site.Title }}" />
+<meta property="og:site_name" content="{{ .Site.Params.title }}" />
+
+{{ $description := .Summary | $.RenderString | plainify | truncate 280 }}
+<meta name="description" content="{{ $description }}" />
+<meta itemprop="description" content="{{ $description }}" />
+<meta property="og:description" content="{{ $description }}" />
+<meta name="twitter:description" content="{{ $description }}" />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
