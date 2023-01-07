@@ -6,7 +6,7 @@
     <header>
       <div class="logo">
         <div class="logo--inner">
-          <h1><a  href="{{ .Site.BaseURL }}">{{ .Site.Params.title }}</a></h1>
+          <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Params.title }}</a></h1>
           <h2>{{ .Site.Params.titleAddition }}</h2>
           {{if .IsHome}}
             <p>{{ .Page.Params.lead | markdownify }}</p>
@@ -25,6 +25,12 @@
       {{ block "main" . }}{{ end }}
     </main>
 
+    <footer>
+      <div class="footer--inner">
+        <hr>
+          <p>© 2023 <a href="{{ .Site.BaseURL }}">{{ .Site.Params.title }} &middot; {{ .Site.Params.titleAddition }}</a> / <a href="https://github.com/BetterCLI/bettercli.org">GitHub</a></p>
+      </div>
+    </footer>
     {{ if templates.Exists "partials/footer/script-footer.html" -}}
       {{ partial "footer/script-footer.html" . }}
     {{ else -}}

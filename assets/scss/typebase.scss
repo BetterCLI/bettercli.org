@@ -28,6 +28,7 @@ p {
   margin-top: $leading / 2;
   margin-bottom: 0;
 }
+
 ul,
 ol {
   margin-top: $leading;
@@ -40,6 +41,10 @@ ol {
     margin-top: 0;
     margin-bottom: 0;
   }
+}
+p ~ ul,
+p ~ ol {
+  margin-top: 0;
 }
 blockquote {
   line-height: $leading;

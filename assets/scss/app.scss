@@ -4,7 +4,8 @@ $sansserif: Franklin Gothic Medium, Franklin Gothic, ITC Franklin Gothic, Arial,
 /** Import modern-css-reset */
 @import 'modern-css-reset/src/reset';
 pre,
-code {
+code,
+.highlight {
   tab-size: 2;
   hyphens: none;
   word-break: keep-all;
@@ -117,7 +118,8 @@ header {
 }
 header nav ul,
 .logo--inner,
-main {
+main,
+footer {
   display: block;
   padding: 15px 35px;
   max-width: 1280px;
@@ -136,9 +138,11 @@ main {
 .single {
   .article-wrapper {
     display: flex;
+    max-width: 1280px;
   }
   .article-body {
     flex: 1;
+    min-width: 0; // https://stackoverflow.com/questions/32035406/how-to-limit-pre-tag-width-inside-flex-container
   }
   aside {
     width: 420px;
@@ -235,6 +239,12 @@ h6 {
       }
     }
   }
+  header nav ul,
+  .logo--inner,
+  main,
+  footer {
+    padding: 15px;
+  }
   .md-columns {
     flex-direction: column;
   }
@@ -283,6 +293,9 @@ hr {
   border-left: 0.5rem solid darken(#e3f3e9, 30%);
   background: #e3f3e9;
   color: darken(#e3f3e9, 90%);
+  & > p:first-child {
+    margin-top: 0;
+  }
 }
 
 .readMoreLink {
