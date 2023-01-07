@@ -119,7 +119,7 @@ header nav ul,
 .logo--inner,
 main {
   display: block;
-  padding: 15px;
+  padding: 15px 35px;
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -144,6 +144,29 @@ main {
     width: 420px;
     padding: 0 16px;
     margin-left: 32px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  .hash-link {
+    font-size: 80%;
+    opacity: 0;
+    text-decoration: none;
+    color: rgb(198, 198, 198);
+    transition: opacity 0.15s ease-in-out;
+    &:hover {
+      color: rgb(125, 125, 125);
+    }
+  }
+  &:hover {
+    .hash-link {
+      opacity: 1;
+    }
   }
 }
 
@@ -252,4 +275,21 @@ hr {
   height: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.callout {
+  padding: 0.9rem;
+  margin: 1rem 0;
+  border-left: 0.5rem solid darken(#e3f3e9, 30%);
+  background: #e3f3e9;
+  color: darken(#e3f3e9, 90%);
+}
+
+.readMoreLink {
+  font-size: 80%;
+  padding: 0.7rem 0.7rem 0.55rem 0.7rem;
+  margin: 0.5rem 0;
+  border-left: 0.5rem solid darken(#e3eef3, 30%);
+  background: #e3eef3;
+  color: darken(#e3eef3, 90%);
 }

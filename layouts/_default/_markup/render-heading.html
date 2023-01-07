@@ -1,0 +1,4 @@
+<h{{ .Level }} id="{{ .Anchor | safeURL }}">
+{{ .Text | safeHTML }}
+<a aria-hidden="true" class="hash-link" title="Permalink to this part of the document" href="#{{ .Anchor | safeURL }}">#</a>
+</h{{ .Level }}>

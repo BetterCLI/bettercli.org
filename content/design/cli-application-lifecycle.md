@@ -1,5 +1,6 @@
 ---
 title: CLI application lifecycle
+draft: true
 ---
 
 When making decisions in an existing CLI application, or design a new one, you should consider specifics parts of its lifecycle. There is a stark contrast to consider when you are coming from a background of Web Apps or Services.
