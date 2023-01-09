@@ -6,6 +6,18 @@ How users install your CLI is a very important consideration. It should reflect 
 
 On this page, let’s look at some of the options. There are many aspects to consider and a way too many options. It’s a fair strategy to start simple and listen to your users. However, choosing an installation method also influences how easy or complicated is it to install a new version or uninstall your application.
 
+<!--
+CLI app’s code
+
+- users building their own
+  - Can your analytics handle this? Will it include a correct version number? Or will it make a mess in your reporting?
+- you are releasing it
+- 3rd parties caching it: repository mirrors, caching proxies, in some cases archiving or download servers and more
+- users caching it in their Artifact managers like Nexus or Artifactory
+- Application is on the developer machine, it could be installed by a installer, package manager or manually. For all users or just specific ones? It could be on a network drive or a container, available for other users.
+- =\> user machine
+-->
+
 ## Installation lifecycle
 
 Installation and distribution is only one part of the story. There are many aspects of an installation method to consider:

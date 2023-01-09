@@ -1,48 +1,36 @@
 ---
 title: Better CLI
-lead: Guide for developers, product managers, technical writers, UX designers and anyone else designing, building or maintaining a Command Line Interface application.
+summary: Guide for developers, product managers, technical writers, UX designers and anyone else designing, building or maintaining a Command Line Interface application.
 ---
 
 {{% columns %}} <!-- begin columns block -->
 
-## Introduction
+## Why CLIs?
 
-This document should act as a best practices showcase and reference for anyone working on CLI tooling.
+CLI applications live in an interesting space, where human-computer interaction naturally blends with automation and programming.
+
+Command-line interfaces are often defined as _just that_: text-based interfaces or APIs. This makes some sense, as **CLI are well useable for humans to input commands and for machine-to-machine automation and scripting**. It could be a utilitarian script performing a single action. Or a major application meant to run continuously as a service.
+
+The textual interface crosses architectural paradigms, programming languages, and operating systems. **CLI applications are a rather specific area.** In many ways close to GUI/desktop applications, with [a specific lifecycle]({{< relref "cli-application-lifecycle" >}}). In other ways, CLI applications greatly benefit from being aware of and sometimes implementing current trends in the cloud and DevOps.
+
+CLI application could be a massive ecosystem on its own. With hundreds of commands and options, complex integrations or 3rd party plugins. Or it could be a companion application to another product or a single-purpose utility.
+
+Command-line interfaces are with us for decades. They accumulated layers of practices and rules but also evolved together with the ecosystems built around them.
 
 <---> <!-- separator, between columns -->
 
-## What is a CLI?
+## Introduction
 
-CLIs are a rather specific area. They are very close to UI/desktop applications, especially
-
-CLI application could be a massive ecosystem on its own or a companion application to another product or a single-purpose utility.
-
-I’m using a very broad definition when talking about CLI or CLI apps. „CLI application“ used in this guide could describe something as simple as a bash script, or something as complex as a full-blown UI in the terminal. It could be a utilitarian script performing a single action. Or a major application meant to run continuously as a service.
-
-{{% /columns %}}
+This document should act as a best practices showcase and reference for anyone working on CLI applications or tooling.
 
 ---
 
-## Notes
+There are 3 main sections, all born out of frustration when working on CLIs:
 
-{{% columns %}}
-
-### Example app
-
-As an example in the documentation, we will reference an imaginary tool called `multipush`.
-
-<---> <!-- separator, between columns -->
-
-### Users
-
-CLIs are often used by at least somewhat savvy users. They need to be able to at minimum be able open a terminal app, even if only by following instructions, and type or paste commands.
-
-<---> <!-- separator, between columns -->
-
-### CLIs compared to web apps and services
-
-### CLIs compared to desktop apps
+1. [Designing a CLI]({{< relref "design" >}}): outlining common topics, patterns and pitfalls.
+1. [How-to guides]({{< relref "how-to" >}}): a collection of tips and tricks for tackling specific problems.
+1. [Glossary of CLI-related terms and concepts]({{< relref "glossary" >}})
 
 {{% /columns %}}
 
-<!-- TODO: Should this be available as a CLI? -->
+<!-- TODO: This documentation should be available as a CLI. Including auxiliary tooling it will try to propose -->

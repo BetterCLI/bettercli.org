@@ -45,7 +45,13 @@ CLI Help can act as _reference material_ listing and explaining all available co
 
 When documenting your application, you should decide whether you want to provide a _Reference_ or _Documentation_. This is not a binary choice, there is a lot of room for finding a solution that works best for your use case. Regardless, most likely **you will want to have both!**
 
-Let's take a look at these two approaches.
+### Long and short versions
+
+Let's take a look at these two approaches. A pattern you can see fairly often is to have two or more versions of the CLI documentation. For example:
+
+- a short one, acting as a quick _reference_
+- a longer document, describing all the options and settings in detail
+- a documentation portal or a manpages, describing everything in full details
 
 ### Reference
 
@@ -139,11 +145,9 @@ $ multipush --help
 {{% include "content/design/example-help.txt" %}}
 ```
 
-### Notes
+### Showing help by default
 
-You may invoke a [Pager]({{< relref "terminal-pagers" >}}) when displaying help.
-
-You may print the Help text on running your app without any arguments and use it as an introduction for new users:
+You may **print the Help text on running your app without any arguments** and use it as an introduction for new users:
 
 ```console
 $ multipush
@@ -161,14 +165,16 @@ Missing "target" option! Use --target
 Welcome to multipush!
 ```
 
+### Using a Pager for longer documents
+
+You may invoke a [Pager]({{< relref "terminal-pagers" >}}) when displaying help. **This behavior could confuse users.** They might not know that they can scroll up and down. Or they might not know that they can search for a specific term. They might not know how to exit the Pager. Asking for `aws help` as a new AWS CLI user will transport you to a [Pager]({{< relref "terminal-pagers" >}}) screen without any usage instructions.
+
+![AWS CLI defaults to "less" pager by default](/images/aws-help-output-with-pager.png 'AWS CLI defaults to "less" pager by default')
+
+An argument for avoiding the pager is that experienced users can invoke the pager themselves with a pipe `$ multipush | less`, but it's a massive obstacle for less experienced users.
+
 <!--
-### Long and short versions
 
-A pattern you can see fairly often is to have two or more versions of the CLI documentation. For example:
-
-- a short one, acting as a quick reference.
-- longer one, describing all the options and settings in details
-- full on documentation, like a manpage, describing internal working
 
 ## Writing or generating a help text
 
@@ -194,6 +200,25 @@ You could provide a `man` subcommand: `$ multipush man`
 ## Handling typos and wrong commands
 
 Handling typos and invalid usage in CLI apps is an interesting challenge. Finding a good balance, depending on your tool’s audience and usage should be taken seriously. These behaviors are often configurable within your framework or arguments parsing libraries.
+
+For example, [npm CLI](https://www.npmjs.com) is doing a very good job. In the example below, the user mistyped a local-context command `npm start`. A few things to point out in this short output:
+
+1. Failure is the first line of output, making it clear what happened
+1. Providing alternative spellings even outside of the local context, by providing a global `npm stars` command
+1. The _Did you mean_ section is leveraging a description of alternative commands to try
+1. In the end, the user is offered a way to list all available commands with `npm run`
+
+```text
+$ npm run star
+npm ERR! Missing script: "star"
+npm ERR!
+npm ERR! Did you mean one of these?
+npm ERR!     npm stars # View packages marked as favorites
+npm ERR!     npm start # Start a package
+npm ERR!
+npm ERR! To see a list of scripts, run:
+npm ERR!   npm run
+```
 
 Being strict, and requiring all options to be typed correctly, with valid values and even in a specific order leads to a predictable CLI. With helpful error messages guiding users to a correct configuration. And consistent types and values for processing.
 

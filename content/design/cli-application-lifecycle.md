@@ -2,37 +2,81 @@
 title: CLI application lifecycle
 ---
 
-When making decisions in an existing CLI application, or design a new one, you should consider specifics parts of its lifecycle. There is a stark contrast to consider when you are coming from a background of Web Apps or Services.
+When making decisions in an existing CLI application, or designing a new one, you should **consider specific parts of the CLI application's lifecycle**. It differs from a web application or a service, where you can easily update the code and the users will get the new version the next time they visit the website. CLI applications are much closer to desktop applications.
 
-Once you release an app, there is no taking it back.
+<!--more-->
 
-Making any kind of change will likely affect some of its users.
+## What is a CLI application lifecycle?
 
-Once it’s released, it will be run in a wildest possible setups you can’t imagine. It will be used for things it was not designed to do. It will run on machines that were never tested or even considered.
+In this simplified, but already too complicated diagram below, you can see two major parts: **Distribution** and **Lifecycle**:
 
-CLI app’s code
+```mermaid
+stateDiagram-v2
+    code: CLI code
+    officialBuild: Official build
+    build: Users building their own copy
+    release: CLI released to official channels
+    caching: Repository mirrors (Artifactory), caching proxies, archiving servers
+    artifact: CLI executable is made available
+    user_machine: User machine
+    uninstall: Cleanup after itself?
+    upgrade: Backwards compatibility?
+    downgrade: Handling new options and settings?
 
-- users building their own
-  - Can your analytics handle this? Will it include a correct version number? Or will it make a mess in your reporting?
-- you are releasing it
-- 3rd parties caching it: repository mirrors, caching proxies, in some cases archiving or download servers and more
-- users caching it in their Artifact managers like Nexus or Artifactory
-- Application is on the developer machine, it could be installed by a installer, package manager or manually. For all users or just specific ones? It could be on a network drive or a container, available for other users.
-- =\> user machine
+    state Distribution {
+      code --> officialBuild
+      code --> build
+      officialBuild --> release
+      release --> caching : 3rd parties caching your CLI
+      build --> artifact
+      release --> artifact
+      caching --> artifact
+      artifact --> [*]
+    }
 
-It’s a bad practice to purposedly include a code for bricking/disabling your Application.
+      Distribution --> Lifecycle : Manual installation
+      Distribution --> Lifecycle : Package manager
+      Distribution --> Lifecycle : Provisioned by administrator
+      Distribution --> Lifecycle : Part of a Docker image or a Linux distro
 
-Once the CLI application makes it to the destination machine:
+    state Lifecycle {
+      [*] --> user_machine
+      user_machine --> user_machine : Automatic updates?
+      %% TODO: this loop should be at least mentioned: user_machine --> user_machine : Is it running continuously? Or as a one-off command?
+      user_machine --> downgrade : User decided to downgrade the CLI
+      user_machine --> upgrade : User decided to upgrade the CLI
+      user_machine --> uninstall : User decided to uninstall the CLI
+    }
+```
 
-- it could stay there for years. If it fulfils its intended purpose, apart from security patches, there is little reason to upgrade.
+This page will focus on the **Lifecycle** part of the diagram: **what is happening with the CLI application once it's installed on the user's machine**. Management of the installed application is in the hands of the user. It's not uncommon that CLI applications stay unchanged on a user machine for years. But their options could be dictated by the way you designed your application.
 
-Upgrading
+## Installing CLI application
+
+Installation method used will determine user options. For example if a user used a package manager installation path, then lifecycle parts like **upgrading, downgrading and uninstalling are handled by the package manager**. At the same time, auto-upgrading, unless specifically designed to work well with a package manager, could be problematic.
+
+{{% callout %}}
+
+Read more about the [CLI Distribution aspect on a dedicated page]({{< relref "distribution" >}}).
+
+{{% /callout %}}
+
+## Autoupdate mechanism
+
+- If you implemented auto update, how good is the experience for users deciding to stick to an older version?
+
+## Upgrading CLI version
 
 - Keep settings untouched, or talk to the user
 - rollbacks
   - Handling previous secrets and options
     - For example, when changing a structure of a config file, you will probably include a code to handle or upgrade the old structure. But can your code handle and inform users they are using a structure that’s too new?
-- If you implemented auto update, how good is the experience for users deciding to stick to an older version?
-- removal
-  - clear caches
-  - clear config store
+
+## Downgrading CLI version
+
+## Uninstalling CLI
+
+- clear caches
+- clear config store
+
+Upgrading

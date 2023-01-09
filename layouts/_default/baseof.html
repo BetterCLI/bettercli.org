@@ -9,15 +9,15 @@
           <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Params.title }}</a></h1>
           <h2>{{ .Site.Params.titleAddition }}</h2>
           {{if .IsHome}}
-            <p>{{ .Page.Params.lead | markdownify }}</p>
+            <p>{{ .Summary | markdownify }}</p>
           {{end}}
         </div>
       </div>
       <nav>
         <ul>
           <li><a href="{{ relref . "design" }}">Design Guides</a></li>
-          <li><a href="{{ relref . "how-to" }}">How tos</a></li>
-          <li><a href="{{ relref . "reference" }}">Reference</a></li>
+          <li><a href="{{ relref . "how-to" }}">How-tos</a></li>
+          <li><a href="{{ relref . "glossary" }}">Glossary</a></li>
         </ul>
       </nav>
     </header>
