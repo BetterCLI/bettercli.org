@@ -48,6 +48,7 @@ header {
   margin: 0 auto;
   .logo {
     background: #343950;
+    border-bottom: 1px solid lighten(#343950, 10%);
     color: rgb(198, 198, 198);
     a {
       color: #fefefe;
@@ -60,7 +61,7 @@ header {
     p {
       color: #fefefe;
       line-height: 1.5;
-      font-size: 1.4rem;
+      font-size: 1.8rem;
     }
     h1,
     h2 {
@@ -85,18 +86,22 @@ header {
   }
 
   nav {
+    font-family: $sansserif;
     background: #292f42;
+    border-bottom: 1px solid lighten(#292f42, 20%);
     ul,
     li {
       display: inline-block;
-      margin-right: 18px;
+      margin-right: 24px;
       padding-left: 0;
     }
     a {
       color: white;
+      text-decoration: none;
       &:visited:hover,
       &:hover {
-        color: rgb(200, 200, 255);
+        text-decoration: underline;
+        color: rgb(227, 227, 255);
       }
     }
   }
@@ -121,7 +126,7 @@ header nav ul,
 main,
 footer {
   display: block;
-  padding: 15px 35px;
+  padding: 10px 35px 15px 35px;
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -202,6 +207,7 @@ h6 {
 }
 
 .breadcrumb {
+  font-family: $sansserif;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -209,16 +215,20 @@ h6 {
   flex-wrap: wrap;
   align-items: baseline;
   font-size: 0.7rem;
-}
-
-.breadcrumb li {
-  display: inline;
-  white-space: nowrap;
-}
-
-.breadcrumb li + li:before {
-  content: '>';
-  padding: 0.3rem;
+  a {
+    color: lighten(#343950, 45%);
+    &:hover {
+      color: lighten(#343950, 5%);
+    }
+  }
+  li {
+    display: inline;
+    white-space: nowrap;
+  }
+  li + li:before {
+    content: '>';
+    padding: 0.3rem;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
@@ -229,13 +239,17 @@ h6 {
     header {
       .logo {
         min-height: 0;
+        padding: 0;
       }
       a {
         text-decoration: underline;
       }
-      h1,
+      h1 {
+        font-size: 2rem;
+      }
+
       h2 {
-        font-size: 1.4em;
+        font-size: 1.4rem;
       }
     }
   }

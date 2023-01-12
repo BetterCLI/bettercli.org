@@ -8,7 +8,11 @@ When making decisions in an existing CLI application, or designing a new one, yo
 
 ## What is a CLI application lifecycle?
 
-In this simplified, but already too complicated diagram below, you can see two major parts: **Distribution** and **Lifecycle**:
+Capturing what happens to a CLI application, once it's written is a complex task. It's not just about the code, but also about the distribution, installation, and the way the application is used. It's also about **the way the application is upgraded, downgraded, and uninstalled**.
+
+In this simplified, but already too complicated diagram below, you can see two major parts: **Distribution** and **Lifecycle**.
+
+This page will focus on the **Lifecycle** part of the diagram: **what is happening with the CLI application once it's installed on the user's machine**. Management of the installed application is in the hands of the user. It's not uncommon that **CLI applications stay unchanged on a user machine for years**. But their options could be dictated by the way you designed your application.
 
 ```mermaid
 stateDiagram-v2
@@ -49,11 +53,9 @@ stateDiagram-v2
     }
 ```
 
-This page will focus on the **Lifecycle** part of the diagram: **what is happening with the CLI application once it's installed on the user's machine**. Management of the installed application is in the hands of the user. It's not uncommon that CLI applications stay unchanged on a user machine for years. But their options could be dictated by the way you designed your application.
-
 ## Installing CLI application
 
-Installation method used will determine user options. For example if a user used a package manager installation path, then lifecycle parts like **upgrading, downgrading and uninstalling are handled by the package manager**. At the same time, auto-upgrading, unless specifically designed to work well with a package manager, could be problematic.
+The installation method used will determine user options. For example, if a user used a package manager installation path, then lifecycle parts like **upgrading, downgrading and uninstalling are handled by the package manager**. At the same time, auto-upgrading, unless specifically designed to work well with a package manager, could be problematic.
 
 {{% callout %}}
 
@@ -61,22 +63,22 @@ Read more about the [CLI Distribution aspect on a dedicated page]({{< relref "di
 
 {{% /callout %}}
 
-## Autoupdate mechanism
+## Auto-update mechanism
 
-- If you implemented auto update, how good is the experience for users deciding to stick to an older version?
+**Auto-updating software deserves a dedicated page.** It's right on the border of Distribution and Lifecycle. From the lifecycle angle, it's important to consider:
+
+- If you implemented auto-update, how good is the **experience for users deciding to stay on a specific version**?
+- Do you **respect different installation methods**? E.g. if users are installing your application from the local mirror or Artifactory, will you fetch the new version from there? Or will you try to use your global store?
+- Do you have different policies for e.g. security patches vs. major releases with breaking changes?
 
 ## Upgrading CLI version
 
-- Keep settings untouched, or talk to the user
-- rollbacks
-  - Handling previous secrets and options
-    - For example, when changing a structure of a config file, you will probably include a code to handle or upgrade the old structure. But can your code handle and inform users they are using a structure that’s too new?
+A new version of the CLI should handle previous secrets and options. Are you supporting _very_ old versions? You should [version your config files and secrets]({{< relref "configuration" >}}), and handle the upgrade process. Will you update the configuration files once they were loaded or validated for the new version as well?
 
 ## Downgrading CLI version
 
+Users may also downgrade to a previous version - for compatibility reasons or because the new version introduced regressions. Or they just tested a prerelease version of your application. How does your CLI behave in cases where it encounters an unknown configuration version? Be explicit with your error messages.
+
 ## Uninstalling CLI
 
-- clear caches
-- clear config store
-
-Upgrading
+When you use configuration files and caches, do you clean them up when the user uninstalls your application?
