@@ -10,9 +10,15 @@ When making decisions in an existing CLI application, or designing a new one, yo
 
 Capturing what happens to a CLI application, once it's written is a complex task. It's not just about the code, but also about the distribution, installation, and the way the application is used. It's also about **the way the application is upgraded, downgraded, and uninstalled**.
 
-In this simplified, but already too complicated diagram below, you can see two major parts: **Distribution** and **Lifecycle**.
+In this simplified, but already too complicated diagram below, you can see two major parts: **Distribution** and **Lifecycle**. This page will focus on the **Lifecycle** part of the diagram: **what is happening with the CLI application once it's installed on the user's machine**. A few things you want to keep in mind:
 
-This page will focus on the **Lifecycle** part of the diagram: **what is happening with the CLI application once it's installed on the user's machine**. Management of the installed application is in the hands of the user. It's not uncommon that **CLI applications stay unchanged on a user machine for years**. But their options could be dictated by the way you designed your application.
+- The machine belongs to the user, your application is a guest.
+- Users have **good** reasons to...
+  - ... stay on a specific version of the CLI, without upgrading. Even for _years_ and possibly longer.
+  - ... configure and use the application in ways you never imagined. Or recommended.
+  - ... switch between versions and installation methods back and forth. Or even run multiple versions installed with different package managers on the same machine.
+
+Management of the installed application is in the hands of the user. It's not uncommon that **CLI applications stay unchanged on a user machine for years**. But their options could be dictated by the way you designed your application.
 
 ```mermaid
 stateDiagram-v2
@@ -77,8 +83,8 @@ A new version of the CLI should handle previous secrets and options. Are you sup
 
 ## Downgrading CLI version
 
-Users may also downgrade to a previous version - for compatibility reasons or because the new version introduced regressions. Or they just tested a prerelease version of your application. How does your CLI behave in cases where it encounters an unknown configuration version? Be explicit with your error messages.
+Users may also downgrade to a previous version - for compatibility reasons or because the new version introduced regressions. Or they just tested a prerelease version of your application. **How does your CLI behave in cases where it encounters an unknown (future) configuration version?** [Be explicit with your error messages.]({{< relref "messaging" >}})
 
 ## Uninstalling CLI
 
-When you use configuration files and caches, do you clean them up when the user uninstalls your application?
+When you use configuration files and caches, do you clean them up when the user uninstalls your application? Can you run a clean or post-installation hook for all different installation methods? If not, do you have different cleanup behaviors for different users?
