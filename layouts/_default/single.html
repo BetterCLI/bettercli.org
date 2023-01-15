@@ -1,23 +1,26 @@
 {{ define "main" }} {{ partial "breadcrumbs.html" . }}
 <article>
-  <h1>{{ .Title }}</h1>
-  {{ if gt (.RawContent | strings.Count "<!--more-->") 0 }}
-  <div class="perex">{{ .Summary }}</div>
-  <hr />
-  {{ end }}
+  <div class="article-header">
+    <h1>{{ .Title }}</h1>
+    {{ if gt (.RawContent | strings.Count "<!--more-->") 0 }}
+    <div class="perex">{{ .Summary }}</div>
+    {{ end }}
+  </div>
+
+  <!-- <hr /> -->
+
   <div class="article-wrapper">
     <div class="article-body">
+      <div class="toc">
+        <hr />
+        <h4>Table Of Contents</h4>
+        {{ .Page.TableOfContents }}
+        <hr />
+      </div>
       {{ if gt (.RawContent | strings.Count "<!--more-->") 0 }} {{ $parts :=
       split .RawContent "<!--more-->" }} {{ index $parts 1 | markdownify }} {{
       else }} {{ .Content }} {{ end }}
     </div>
-
-    <aside>
-      <div class="toc">
-        <h4>Table Of Contents</h4>
-        {{ .Page.TableOfContents }}
-      </div>
-    </aside>
   </div>
 </article>
 {{ end }}
