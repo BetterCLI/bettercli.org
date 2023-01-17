@@ -297,14 +297,32 @@ hr {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+$calloutElements: p, h2, h3, h4, h5, h6;
 .callout {
   padding: 0.9rem;
   margin: 1rem 0;
   border-left: 0.5rem solid darken(#e3f3e9, 30%);
   background: #e3f3e9;
   color: darken(#e3f3e9, 90%);
-  & > p:first-child {
-    margin-top: 0;
+  @each $element in $calloutElements {
+    & > #{$element}:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+blockquote {
+  padding: 0.9rem;
+  margin: 1rem 0;
+  border-left: 0.5rem solid darken(#fefefe, 30%);
+  color: darken(#e3f3e9, 90%);
+  p {
+    font-size: 110%;
+  }
+  @each $element in $calloutElements {
+    & > #{$element}:first-child {
+      margin-top: 0;
+    }
   }
 }
 
@@ -315,4 +333,62 @@ hr {
   border-left: 0.5rem solid darken(#e3eef3, 30%);
   background: #e3eef3;
   color: darken(#e3eef3, 90%);
+}
+/*** VARIABLES ***/
+/* Colors */
+$black: #1d1f20;
+$green: #e3f3e9;
+
+.importantList {
+  // https://codepen.io/erinesullivan/pen/qGrdGV
+  ol {
+    counter-reset: gradient-counter;
+    list-style: none;
+    margin: 1.75rem 0;
+    padding-left: 1rem;
+    > li {
+      background: white;
+      border-radius: 0 0.5rem 0.5rem 0.5rem;
+      box-shadow: 0.15rem 0.45rem 0.3rem rgba(0, 0, 0, 0.05),
+        0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
+      counter-increment: gradient-counter;
+      margin-top: 1rem;
+      min-height: 3rem;
+      padding: 1rem 1rem 1rem 3rem;
+      position: relative;
+      &::before,
+      &::after {
+        background: darken($green, 20%);
+        border-radius: 10rem;
+        content: '';
+        height: 3rem;
+        left: -1rem;
+        overflow: hidden;
+        position: absolute;
+        top: -1rem;
+        width: 3rem;
+      }
+      &::before {
+        align-items: center;
+        content: counter(gradient-counter);
+        color: lighten($black, 15%);
+        display: flex;
+        font-weight: 900;
+        font-size: 1.1rem;
+        text-shadow: 1px 1px 2px darken($green, 10%);
+        font-family: $sansserif;
+        justify-content: center;
+        padding: 0.125em 0.25em;
+        z-index: 1;
+      }
+      + li {
+        margin-top: 2rem;
+      }
+    }
+  }
+}
+sup {
+  vertical-align: top;
+  position: relative;
+  top: -0.3rem;
 }
