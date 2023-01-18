@@ -108,6 +108,8 @@ There are many useful usage metrics you could collect from your CLI. For example
 
 Another important metric is the success rate, were users able to run a command? Did it successfully exit with 0 or something else happened? And collecting flags allows you to gauge the usage of specific features. This is important when you decide to make a Breaking Change or deprecate something.
 
+<!-- TODO example API? -->
+
 ### Building dashboards
 
 How your dashboards will look, will greatly depend on the kind of data you collect and the product you are trying to build. Because of [the CLI lifecycle]({{< relref "cli-application-lifecycle" >}}), you will have a [long tail](https://en.wikipedia.org/wiki/Long_tail) of versions that are sending you analytics. When interpreting the analytics data, pay attention to trends and how they relate to the version of the CLI.
