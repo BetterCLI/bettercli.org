@@ -1,5 +1,6 @@
 ---
 title: CLI Design Checklist
+draft: true
 ---
 
 This is a checklist of things to consider when designing a CLI app. It is not a comprehensive list, but rather a collection of things that are often overlooked. It is a living document, so feel free to suggest additions or changes.

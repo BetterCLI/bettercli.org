@@ -1,1 +1,16 @@
-{{ define "main" }} {{ .Content }} {{ end }}
+{{ define "main" }} {{ .Content }}
+
+<h2>Contents</h2>
+<ol>
+  {{ range .Pages }}
+  <li>
+    <a href="{{.RelPermalink}}">{{.Title}}</a>
+    <ol>
+      {{ range .Pages }}
+      <li><a href="{{.RelPermalink}}">{{.Title}}</a></li>
+      {{end}}
+    </ol>
+  </li>
+  {{ end }}
+</ol>
+{{ end }}
