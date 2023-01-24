@@ -2,7 +2,9 @@
 title: Self-executing installation scripts
 ---
 
-Installer scripts, often piped from the internet like so:
+Installer scripts for CLI applications often piped from the internet with _curl pipe bash_ are controversial. Combining ease of use with security and reproducibility is a challenge.
+
+<!--more-->
 
 ```bash
 curl https://multipu.sh/install.sh | sh
@@ -48,6 +50,8 @@ CLI
 
 ## Security
 
-## Keep installer body in a function
+## Building a curl pipe bash installer
+
+### Keep installer body in a function
 
 This method prevents a commonly cited pitfal of these installation scripts.

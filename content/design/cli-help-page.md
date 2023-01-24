@@ -129,7 +129,7 @@ graph TD
 
 ## Formatting and displaying CLI Help
 
-There isn't a _proper_ standard for formatting CLI help pages. However, there are some common patterns and conventions to follow. A good starting point is to follow the structure and output of [man pages]({{< relref "#man-page" >}}). In general, it should look like this:
+There isn't a _proper_ standard for formatting CLI help pages. However, there are some common patterns and conventions to follow. A good starting point is to follow the structure and output of [man pages]({{< relref "manpage" >}}). In general, it should look like this:
 
 1. Name, Description and version
 1. Usage and example usage

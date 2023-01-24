@@ -4,11 +4,17 @@
 <ol>
   {{ range .Pages }}
   <li>
-    <a href="{{.RelPermalink}}">{{.Title}}</a>
+    <h3><a href="{{.RelPermalink}}">{{.Title}}</a></h3>
     <ol>
-      {{ range .Pages }}
+      {{ range .Pages }} {{ if .IsSection }}
+      <ol>
+        {{ range .Pages }}
+        <li><a href="{{.RelPermalink}}">{{.Title}}</a></li>
+        {{ end }}
+      </ol>
+      {{ else }}
       <li><a href="{{.RelPermalink}}">{{.Title}}</a></li>
-      {{end}}
+      {{ end }} {{end}}
     </ol>
   </li>
   {{ end }}

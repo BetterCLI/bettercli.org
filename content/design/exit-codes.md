@@ -2,11 +2,11 @@
 title: Exit codes
 ---
 
-When your CLI app finishes, it needs to send an Exit code[^1]. A number, usually between 0 and 127. Exit code zero means „success“. Meaning of _success_ in this case is up to your interpretation and design goals. Anything above zero signals a failure of some sort.
+When your CLI app finishes, it needs to send an Exit code. A number, usually between 0 and 127. Exit code zero means „success“. Meaning of _success_ in this case is up to your interpretation and design goals. Anything above zero signals a failure of some sort.
 
 <!--more-->
 
-In most scenarios, you should exit with a non-zero exit code whenver CLI command couldn’t accomplish its task.
+In most scenarios, you should exit with a non-zero exit code[^1] whenver CLI command couldn’t accomplish its task.
 
 However, there is a grey area, where semantics and usage of the CLI matters a lot. A good example is an HTTP CLI client, like cURL or httpie. Should they fail with a non-zero exit code for all HTTP requests that connect, but responds with an HTTP code different than 200 OK? What about 301 Redirects?
 

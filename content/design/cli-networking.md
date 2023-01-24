@@ -82,7 +82,7 @@ Be careful!
 
 - **There isn’t a formal standard** for values! It’s implementation dependent.
 - `HTTPS_PROXY` proxy itself **does not need to be an HTTPS service**. It only defines that _HTTPS traffic_ will be routed through it! E.g. `HTTPS_PROXY=http://proxy.internal:9000` is a valid scenario.
-- If you are using [other transport mechanisms and protocols]({{< relref "#using-transport-mechanisms-other-than-http" >}}), you might have to implement proxy configuration options for these as well. E.g. `FTP_PROXY`
+- If you are using [other transport mechanisms and protocols]({{< relref "#using-transport-mechanisms-other-than-https" >}}), you might have to implement proxy configuration options for these as well. E.g. `FTP_PROXY`
 
 In some languages and frameworks, **you might need to explicitly pass values of `HTTP_PROXY` and `HTTPS_PROXY`** to your networking library. In other languages, it might be enough to set these environment variables and the networking library will pick them up automatically.
 
