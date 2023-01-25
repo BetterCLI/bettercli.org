@@ -169,7 +169,7 @@ Welcome to multipush!
 
 You may invoke a [Pager]({{< relref "terminal-pagers" >}}) when displaying help. **This behavior could confuse users.** They might not know that they can scroll up and down. Or they might not know that they can search for a specific term. They might not know how to exit the Pager. Asking for `aws help` as a new AWS CLI user will transport you to a [Pager]({{< relref "terminal-pagers" >}}) screen without any usage instructions.
 
-![AWS CLI defaults to "less" pager by default](/images/aws-help-output-with-pager.png 'AWS CLI defaults to "less" pager by default')
+![AWS CLI defaults to "less" pager by default](aws-help-output-with-pager.png 'AWS CLI defaults to "less" pager by default')
 
 An argument for avoiding the pager is that experienced users can invoke the pager themselves with a pipe `$ multipush | less`, but it's a massive obstacle for less experienced users.
 

@@ -35,7 +35,7 @@ You are probably already collecting such analytics from your [API Gateway](https
 
 Depending on your [CLI distribution channels]({{< relref "installation" >}}) you could gather good usage analytics from package managers and integrations. For example, [npm](https://www.npmjs.com), [Homebrew](https://formulae.brew.sh/analytics/), [Jenkins](http://stats.jenkins.io), [Docker Hub](https://hub.docker.com), and others publicly show download counts and other metrics.
 
-{{% figure src="../jenkins-analytics-screenshot.png" caption="Example of install counts for a plugin on Jenkins.io" %}}
+![Example of install counts for a plugin on Jenkins.io](jenkins-analytics-screenshot.png)
 
 ---
 
@@ -114,7 +114,7 @@ Another important metric is the success rate, were users able to run a command? 
 
 How your dashboards will look, will greatly depend on the kind of data you collect and the product you are trying to build. Because of [the CLI lifecycle]({{< relref "cli-application-lifecycle" >}}), you will have a [long tail](https://en.wikipedia.org/wiki/Long_tail) of versions that are sending you analytics. When interpreting the analytics data, pay attention to trends and how they relate to the version of the CLI.
 
-![Example of a CLI versions distribution](../version-distribution.png 'Seeing a CLI version distribution like this is not uncommon')
+![Example of a CLI versions distribution](version-distribution.png 'Seeing a CLI version distribution like this is not uncommon')
 
 For example, when observing error rates, take into account how quickly is new CLI version adopted by the users. Imagine how quickly would you spot a fatal bug in a new version. That's affecting only Windows. **Such an event would most likely not be visible on a global error rate across all versions and platforms.**
 

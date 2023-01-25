@@ -79,7 +79,23 @@ Read more about the [CLI Distribution aspect on a dedicated page]({{< relref "di
 
 ## Upgrading CLI version
 
+{{% callout %}}
+
+See the [Versioning]({{< relref "versioning" >}}) page for additional context.
+
+{{% /callout %}}
+
 A new version of the CLI should handle previous secrets and options. Are you supporting _very_ old versions? You should [version your config files and secrets]({{< relref "configuration" >}}), and handle the upgrade process. Will you update the configuration files once they were loaded or validated for the new version as well?
+
+### Why are old versions a problem?
+
+For CLI authors, especially if you are working on a commercial product, keeping the [long tail](https://en.wikipedia.org/wiki/Long_tail) of old versions shorter is preferable. This will greatly help with rolling out security patches, new functionality or even auditing.
+
+<!--
+Users might not care too much. If the tool gets the job done, there isn't an incentive to upgrade.
+
+Traditionally, this wasn't a big issue. As a user, you want to be reasonably recent for bug fixes, and compatibility patches.
+In recent decade or so security -->
 
 ## Downgrading CLI version
 
@@ -88,3 +104,11 @@ Users may also downgrade to a previous version - for compatibility reasons or be
 ## Uninstalling CLI
 
 When you use configuration files and caches, do you clean them up when the user uninstalls your application? Can you run a clean or post-installation hook for all different installation methods? If not, do you have different cleanup behaviors for different users?
+
+## Evolvable and smart clients
+
+Maybe application updates its "plugins" or "extensions" on the fly?
+
+Is it like with NASA updating satellites in space?
+
+For API CLIs, you could rely on API and concepts like Hypermedia or potentionally even a GraphQL to make CLIs evolvable

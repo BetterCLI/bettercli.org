@@ -9,7 +9,7 @@
           <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Params.title }}</a></h1>
           <h2>{{ .Site.Params.titleAddition }}</h2>
           {{if .IsHome}}
-            <p>{{ .Summary | markdownify }}</p>
+            <p>{{ .RenderString .Summary }}</p>
           {{end}}
         </div>
       </div>

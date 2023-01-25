@@ -43,7 +43,7 @@ Proxies are more common than you think and it’s a good idea to **make your CLI
 
 **Some proxies will act only as a tunnel**, to allow your tool to communicate with users’ internal tools and services. **Some will act as a man-in-the-middle**, trying to read your CLI app’s traffic for logging or auditing. Some will act as gatekeepers, blocking or modifying your traffic - for example, to prevent leaks of private information.
 
-![Transparent HTTP proxies work like switchboard operators](/images/museums-victoria-TVe0IEdsVc8-unsplash.jpg)
+![Transparent HTTP proxies work like switchboard operators](museums-victoria-TVe0IEdsVc8-unsplash.jpg)
 
 Let's take an example where your CLI Application needs to make a GET request to your API service. Your API service is available on HTTPS and its URL is `https://api.my.service`. In your application, you are making a call similar to this:
 

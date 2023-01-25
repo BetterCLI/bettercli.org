@@ -1,0 +1,50 @@
+{{/* Original code from: https://laurakalbag.com/processing-responsive-images-with-hugo/   */}}
+{{/* Just modified a bit to work with render_image hook and output webp images   */}}
+{{/* get file that matches the filename as specified as src=""  */}}
+{{ $src := .Page.Resources.GetMatch (printf "%s" (.Destination | safeURL))  }}
+{{ $alt := .PlainText | safeHTML }}
+
+{{/* So for posts that aren't setup in the page bundles, it doesn't fail  */}}
+{{ if $src }}
+
+{{ $smallw := default "550x jpg q70" }}
+{{ $mediumw := default "780x jpg q70" }}
+{{ $medium2w := default "1560x jpg q60" }}
+
+{{/* resize the src image to the given sizes */}}
+{{/* We create a a temp scratch because it's not available in this context */}}
+{{ $data := newScratch }}
+{{ $data.Set "small" ($src.Resize $smallw) }}
+{{ $data.Set "medium" ($src.Resize $mediumw) }}
+{{ $data.Set "medium2" ($src.Resize $medium2w) }}
+
+{{/* add the processed images to the scratch */}}
+
+{{ $small := $data.Get "small" }}
+{{ $medium := $data.Get "medium" }}
+{{ $medium2 := $data.Get "medium2" }}
+
+{{/* only use images smaller than or equal to the src (original) 
+image size, as Hugo will upscale small images */}}
+
+
+<a href="{{ $src.RelPermalink }}">
+    <picture>
+    
+    <source media="(max-width: 500px)" 
+        srcset="{{ $small.RelPermalink }} 1x, {{ $medium.RelPermalink }} 2x">
+
+    <img 
+      alt="{{ $alt }}" 
+      {{ with .Title }} title="{{ . }}"{{ end }} 
+      src="{{ $src.RelPermalink }}" 
+      srcset="{{ $medium.RelPermalink }} 1x{{if gt $src.Width 1100}}, {{$medium2.RelPermalink}} 2x{{end}}"
+      />
+</picture>
+</a>
+  
+  {{/* Since I do image-response class, the only thing that really 
+  matters is the height and width matches the image aspect ratio */}}
+
+  {{ end }}
+

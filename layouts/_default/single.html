@@ -18,7 +18,7 @@
         <hr />
       </div>
       {{ if gt (.RawContent | strings.Count "<!--more-->") 0 }} {{ $parts :=
-      split .RawContent "<!--more-->" }} {{ index $parts 1 | markdownify }} {{
+      split .RawContent "<!--more-->" }} {{ .RenderString (index $parts 1) }} {{
       else }} {{ .Content }} {{ end }}
     </div>
   </div>

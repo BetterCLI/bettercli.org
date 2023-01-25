@@ -6,7 +6,7 @@ Versioning your CLI application is an important part of your CLI design.
 
 ## Semantic Versioning might be the best choice
 
-Many of the distributions mentioned in “CLI distributions” expect or even require your versioning scheme to be compatible with [Semantic Versioning](https://semver.org/#spec-item-10) (SemVer). Unless you have specific needs, that can’t even be supported by [SemVer’s Build metadata section](https://semver.org/#spec-item-10), choosing SemVer is the safest and most compatible option.
+Many of the distributions mentioned in [CLI distribution section]({{< relref "distribution" >}}) expect or even require your versioning scheme to be compatible with [Semantic Versioning](https://semver.org/#spec-item-10) (SemVer). Unless you have specific needs, that can’t even be supported by [SemVer’s Build metadata section](https://semver.org/#spec-item-10), choosing SemVer is the safest and most compatible option.
 
 When deciding on the versioning, you can consider few more
 
