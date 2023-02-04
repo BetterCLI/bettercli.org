@@ -7,8 +7,6 @@
     {{ end }}
   </div>
 
-  <!-- <hr /> -->
-
   <div class="article-wrapper">
     <div class="article-body">
       <div class="toc">
@@ -20,6 +18,8 @@
       {{ if gt (.RawContent | strings.Count "<!--more-->") 0 }} {{ $parts :=
       split .RawContent "<!--more-->" }} {{ .RenderString (index $parts 1) }} {{
       else }} {{ .Content }} {{ end }}
+      <hr />
+      {{partial "related.html" . }}
     </div>
   </div>
 </article>

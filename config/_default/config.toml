@@ -34,12 +34,9 @@ rssLimit = 10
   keepWhitespace = false
 
 [related]
-  threshold = 80
   includeNewer = true
-  toLower = false
-    [[related.indices]]
-    name = "categories"
-    weight = 100
-    [[related.indices]]
-    name = "date"
-    weight = 10
+  threshold = 0
+  toLower = true
+[[related.indices]]
+  name = 'keywords'
+  weight = 100
