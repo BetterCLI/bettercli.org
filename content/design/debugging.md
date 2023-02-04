@@ -2,7 +2,9 @@
 title: Debugging
 ---
 
-Gaining visibility into failures and errors is an important task both for CLI developers and its users. CLI authors want to get visibility into common issues and regressions - for this you want to look into enabling debuggin information combined with Usage Analytics. While users, in case they encounter an error, probably want to accomplish a task and want to understand what went wrong.
+Gaining visibility into CLI failures and errors is an important task both for CLI developers and its users. CLI authors want to get visibility into common issues and regressions - for this you want to look into enabling debuggin information combined with [Usage Analytics]({{< relref "collecting-analytics" >}}). While users, in case they encounter an error, probably want to accomplish a task and want to understand what went wrong.
+
+<!--more-->
 
 ## Local debug output
 
