@@ -88,8 +88,8 @@ To collect analytics, you need to make a network request. If not implemented wel
 
 1. Fire the analytics event **as late as possible, after the command has finished**. You don't want an error in analytics to prevent the command from running.
 1. Make sure your **Analytics API is reliable and fast**. Make analytics processing asynchronous - save the request to a queue and quickly respond to the CLI.
-1. Implement a **_sensible_ timeout**. A few seconds tops. Ideally, from UX perspective, it might be relevant to the command execution time.
-1. [CLI could encounter a complex network scenario]({{< relref "cli-networking" >}}). The analytics call should know _enough_ about the user's network to **fail fast**. For example avoid retries, don't even fire the request if you know you won't be able to connect.
+1. Implement a **_sensible_ timeout**. A few seconds tops. Ideally, from the UX perspective, it might be relative to the command execution time.
+1. [CLI could encounter a complex network scenario]({{< relref "cli-networking" >}}). The analytics call should know _enough_ about the user's network to **fail fast**. For example, avoid retries, or don't even fire the request if you know you won't be able to connect.
 
 {{% /important-list %}}
 
@@ -99,7 +99,7 @@ There are many useful usage metrics you could collect from your CLI. For example
 
 1. Operating system, architecture and CLI version
 1. Environment
-   - Running in CI? In a Docker container?
+   - [Running in a CI pipeline?](https://github.com/npm/ci-detect) In a Docker container?
    - If your application interacts or depends on other tools, checking or collecting their versions or configurations could be valuable.
 1. [Exit codes]({{< relref "exit-codes" >}})
 1. Error messages[^error-messages]: Use language features to make sure that your analytics call can be executed with sufficient information even in case of a catastrophic failure.
