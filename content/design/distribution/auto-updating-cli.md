@@ -1,6 +1,7 @@
 ---
 title: Auto-updating CLI applications
 keywords: installation, lifecycle, versioning, upgrade, auto-update
+weight: 3
 ---
 
 If you have security, business or other reasons to keep your CLI application up-to-date, you might want to consider implementing an auto-update mechanism.

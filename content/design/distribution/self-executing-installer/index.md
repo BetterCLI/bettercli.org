@@ -1,5 +1,6 @@
 ---
 title: Self-executing installation scripts
+weight: 2
 ---
 
 Installer scripts for CLI applications often piped from the internet with _curl pipe bash_ are controversial. They offer ease of use but face security and reproducibility issues.

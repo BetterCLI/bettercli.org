@@ -1,13 +1,30 @@
 {{ define "main" }}
-<main>
-  {{ .Content }}
-  <ul>
-    <!-- Ranges through content/posts/*.md -->
-    {{ range .Pages }}
-    <li>
-      <a href="{{.Permalink}}">{{.Title}}</a>
-    </li>
-    {{ end }}
-  </ul>
+<main class="single">
+  <article>
+    <div class="article-header">
+      <h1>{{ .Title }}</h1>
+      {{ if gt (.RawContent | strings.Count "<!--more-->") 0 }}
+      <div class="perex">{{ .Summary }}</div>
+      {{ end }}
+    </div>
+    <div class="article-wrapper">
+      <div class="article-body">
+        {{ if gt (.RawContent | strings.Count "<!--more-->") 0 }} {{ $parts :=
+        split .RawContent "<!--more-->" }} {{ .RenderString (index $parts 1) }}
+        {{ else }} {{ .Content }} {{ end }}
+        <hr />
+        {{partial "related.html" . }}
+      </div>
+    </div>
+
+    <ol>
+      <!-- Ranges through content/posts/*.md -->
+      {{ range .Pages.ByWeight }}
+      <li>
+        <a href="{{.Permalink}}">{{.Title}}</a>
+      </li>
+      {{ end }}
+    </ol>
+  </article>
 </main>
 {{ end }}

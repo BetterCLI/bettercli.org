@@ -1,5 +1,6 @@
 ---
 title: CLI distribution and installation
+weight: 1
 ---
 
 How users install your CLI is a very important consideration. It should reflect preferences within your user-base and it influences your options and choices regarding things like build process, release cadence, update mechanisms and more.
