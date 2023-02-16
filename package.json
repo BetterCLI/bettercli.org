@@ -47,7 +47,7 @@
     "http-server": "^14.1.1",
     "hugo-installer": "^4.0.1",
     "markdownlint-cli2": "^0.6.0",
-    "mermaid": "^9.3.0",
+    "mermaid": "^9.4.0",
     "modern-css-reset": "^1.4.0",
     "netlify-plugin-submit-sitemap": "^0.4.0",
     "postcss": "^8.4.21",
