@@ -37,7 +37,7 @@
     "postinstall": "hugo-installer --version otherDependencies.hugo --extended --destination node_modules/.bin/hugo"
   },
   "dependencies": {
-    "@babel/cli": "^7.19.3",
+    "@babel/cli": "^7.21.0",
     "@babel/core": "^7.20.2",
     "@babel/preset-env": "^7.20.2",
     "@hyas/core": "^0.1.5",
