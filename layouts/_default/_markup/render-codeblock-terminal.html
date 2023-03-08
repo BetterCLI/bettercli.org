@@ -1,9 +1,13 @@
 <!-- TODO: render terminal examples using xtermjs -->
+{{ .Page.Store.Set "hasTerminal" true }}
+
 {{ $id := delimit (shuffle (seq 1 9)) "" }}
 <div class="terminal" id="terminal-{{$id}}"></div>
 
 <script>
-  var term = new Terminal();
-  term.open(document.getElementById('terminal-{{$id}}'));
-  term.write('{{- .Inner | safeHTML }}');
+  window.terminals.push(() => {
+    var term = new Terminal();
+    term.open(document.getElementById('terminal-{{$id}}'));
+    term.write('{{- .Inner | safeHTML }}');
+  });
 </script>
