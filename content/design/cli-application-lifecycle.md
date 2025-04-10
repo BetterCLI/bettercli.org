@@ -11,6 +11,8 @@ When making decisions in an existing CLI application, or designing a new one, yo
 
 Capturing what happens to a CLI application, once it's written is a complex task. It's not just about the code, but also about the distribution, installation, and the way the application is used. It's also about **the way the application is upgraded, downgraded, and uninstalled**.
 
+There are many lessons to be learned from desktop applications, classical server application, and even mainframe programs.
+
 In this simplified, but already too complicated diagram below, you can see two major parts: **Distribution** and **Lifecycle**. This page will focus on the **Lifecycle** part of the diagram: **what is happening with the CLI application once it's installed on the user's machine**. A few things you want to keep in mind:
 
 - **The machine belongs to the user, your application is a guest.**
