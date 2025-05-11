@@ -1,3 +1,3 @@
 ---
-title: "Distribution and Installation"
+title: 'Distribution and Installation'
 ---
